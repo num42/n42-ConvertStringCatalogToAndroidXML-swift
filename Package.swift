@@ -6,6 +6,9 @@ import PackageDescription
 let package = Package(
   name: "ConvertStringCatalogToAndroidXML",
   platforms: [.macOS(.v13)],
+  products: [
+    .executable(name: "ConvertStringCatalogToAndroidXML", targets: ["ConvertStringCatalogToAndroidXML"])
+  ],
   dependencies: [
     .package(url: "https://github.com/liamnichols/xcstrings-tool", exact: "1.0.0"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
