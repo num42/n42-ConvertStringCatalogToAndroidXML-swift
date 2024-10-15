@@ -1,0 +1,24 @@
+<resources>
+    <string name="child_button">Child Tap</string>
+    <string name="collection_empty_message">Es sind keine Elemente anzuzeigen</string>
+    <string name="collection_item">Element %@</string>
+    <string name="counter_button">Tap</string>
+    <string name="counter_status_text">Anzahl der Child Taps: %d</string>
+    <string name="counter_website">Number42 Website</string>
+    <string name="error_request">Bei der Anfrage ist ein Fehler aufgetreten.</string>
+    <string name="error_universal">Fehler</string>
+    <string name="error_universal_detail">Ein unbekannter Fehler ist aufgetreten.</string>
+    <string name="messagesOfTheDay"></string>
+    <string name="settings_bugreport_alert_action">Ok</string>
+    <string name="settings_bugreport_alert_message">E-Mail Account muss eingerichtet sein</string>
+    <string name="settings_bugreport_alert_title">Fehler</string>
+    <string name="settings_titles_bugreport">Bug Report senden</string>
+    <string name="settings_titles_imprint">Impressum</string>
+    <string name="settings_titles_privacy">Datenschutzerklärung</string>
+    <string name="settings_titles_version">Version</string>
+    <string name="title_child">Child</string>
+    <string name="title_collection">Collection</string>
+    <string name="title_counter">Counter</string>
+    <string name="title_settings">Einstellungen</string>
+    <string name="upcomingEvents"></string>
+</resources>
