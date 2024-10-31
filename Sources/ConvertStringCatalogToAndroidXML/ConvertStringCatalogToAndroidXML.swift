@@ -8,8 +8,8 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
   @Option(help: "Specify the path to the xcstrings file")
   public var xcstringsPath: String
 
-  @Option(help: "Output language")
-  public var outputLanguage: String
+  @Option(help: "Base language")
+  public var baseLanguage: String
 
   @Option(help: "Output path for the generated Android XML file")
   public var outputPath: String
@@ -19,20 +19,27 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
       print("Could not parse file at \(xcstringsPath)")
       throw ExitCode.failure
     }
+      
+      let baseLanguage = StringLanguage(rawValue: baseLanguage)
 
-    let outputLanguage = StringLanguage(rawValue: outputLanguage)
+      for outputLanguage in catalog.languages {
+          let xmlDocument = catalog.converted(to: outputLanguage)
 
-    let xmlDocument = catalog.converted(to: outputLanguage)
+          let url = (outputLanguage == baseLanguage)
+          ? URL(fileURLWithPath: outputPath + "/values/")
+          : URL(fileURLWithPath: outputPath + "/values-\(outputLanguage.rawValue)/")
 
-    let url = URL(fileURLWithPath: outputPath + "/values-\(outputLanguage.rawValue)/")
+          try! FileManager.default.createDirectory(
+                at: url,
+                withIntermediateDirectories: true
+              )
 
-    try! FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
-
-    try! xmlDocument.prettyPrinted
-      .write(
-        toFile: url.path() + "/strings.xml",
-        atomically: true,
-        encoding: .utf8
-      )
+          try! xmlDocument.prettyPrinted
+            .write(
+              toFile: url.path() + "/strings.xml",
+              atomically: true,
+              encoding: .utf8
+            )
+      }
   }
 }

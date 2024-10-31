@@ -8,7 +8,6 @@
     <string name="error_request">Bei der Anfrage ist ein Fehler aufgetreten.</string>
     <string name="error_universal">Fehler</string>
     <string name="error_universal_detail">Ein unbekannter Fehler ist aufgetreten.</string>
-    <string name="messagesOfTheDay"></string>
     <string name="settings_bugreport_alert_action">Ok</string>
     <string name="settings_bugreport_alert_message">E-Mail Account muss eingerichtet sein</string>
     <string name="settings_bugreport_alert_title">Fehler</string>
@@ -20,5 +19,4 @@
     <string name="title_collection">Collection</string>
     <string name="title_counter">Counter</string>
     <string name="title_settings">Einstellungen</string>
-    <string name="upcomingEvents"></string>
 </resources>
