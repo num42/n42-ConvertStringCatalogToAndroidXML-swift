@@ -1,9 +1,9 @@
 <resources>
     <string name="child_button">Child Tap</string>
     <string name="collection_empty_message">Es sind keine Elemente anzuzeigen</string>
-    <string name="collection_item">Element %@</string>
+    <string name="collection_item">Element %1$s</string>
     <string name="counter_button">Tap</string>
-    <string name="counter_status_text">Anzahl der Child Taps: %d</string>
+    <string name="counter_status_text">Anzahl der Child Taps: %2$d</string>
     <string name="counter_website">Number42 Website</string>
     <string name="error_request">Bei der Anfrage ist ein Fehler aufgetreten.</string>
     <string name="error_universal">Fehler</string>

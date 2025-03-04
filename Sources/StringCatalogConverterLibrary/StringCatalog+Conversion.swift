@@ -11,6 +11,8 @@ extension StringCatalog {
     static func cleanupValueForAndroid(_ value: String) -> String {
         value
           .replacingOccurrences(of: "'", with: "\\'")
+          .replacingOccurrences(of: "%@", with: "%1$s")
+          .replacingOccurrences(of: "%d", with: "%2$d")
     }
     
   public func converted(
