@@ -25,10 +25,6 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
     for outputLanguage in catalog.languages {
       let xmlDocument = catalog.converted(to: outputLanguage)
       
-      var finalXmlString = xmlDocument.prettyPrinted
-      
-      finalXmlString = finalXmlString.replacingOccurrences(of: "&amp;#", with: "&#")
-      
       let url = (outputLanguage == baseLanguage)
       ? URL(fileURLWithPath: outputPath + "/values/")
       : URL(fileURLWithPath: outputPath + "/values-\(outputLanguage.rawValue)/")
@@ -38,7 +34,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         withIntermediateDirectories: true
       )
       
-      try! finalXmlString
+      try! xmlDocument.prettyPrinted
         .write(
           toFile: url.path() + "/strings.xml",
           atomically: true,
