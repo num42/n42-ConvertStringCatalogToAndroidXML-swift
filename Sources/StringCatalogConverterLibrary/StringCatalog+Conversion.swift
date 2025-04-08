@@ -3,18 +3,20 @@ import StringCatalog
 
 extension StringCatalog {
   static func cleanupKeyForAndroid(_ key: String) -> String {
-      key
-          .replacingOccurrences(of: ".", with: "_")
-          .replacingOccurrences(of: "-", with: "_")
+    key
+      .replacingOccurrences(of: ".", with: "_")
+      .replacingOccurrences(of: "-", with: "_")
   }
-    
-    static func cleanupValueForAndroid(_ value: String) -> String {
-        value
-          .replacingOccurrences(of: "'", with: "\\'")
-          .replacingOccurrences(of: "%@", with: "%1$s")
-          .replacingOccurrences(of: "%d", with: "%2$d")
-    }
-    
+  
+  static func cleanupValueForAndroid(_ value: String) -> String {
+    value
+      .replacingOccurrences(of: "\n", with: "\\n")
+      .replacingOccurrences(of: "\t", with: "\\t")
+      .replacingOccurrences(of: "'", with: "\\'")
+      .replacingOccurrences(of: "%@", with: "%1$s")
+      .replacingOccurrences(of: "%d", with: "%2$d")
+  }
+  
   public func converted(
     to language: StringLanguage
   ) -> XMLDocument {

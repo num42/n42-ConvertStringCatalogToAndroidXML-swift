@@ -8,6 +8,7 @@
     <string name="error_request">Bei der Anfrage ist ein Fehler aufgetreten.</string>
     <string name="error_universal">Fehler</string>
     <string name="error_universal_detail">Ein unbekannter Fehler ist aufgetreten.</string>
+    <string name="line_break">Das ist ein Text mit zwei\nZeilen und einem\tTab.</string>
     <string name="settings_bugreport_alert_action">Ok</string>
     <string name="settings_bugreport_alert_message">E-Mail Account muss eingerichtet sein</string>
     <string name="settings_bugreport_alert_title">Fehler</string>

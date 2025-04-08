@@ -154,6 +154,23 @@
         }
       }
     },
+    "line.break" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist ein Text mit zwei\nZeilen und einem\tTab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is a text with two\nlines and one\ttab."
+          }
+        }
+      }
+    },
     "messagesOfTheDay" : {
       "extractionState" : "manual",
       "localizations" : {

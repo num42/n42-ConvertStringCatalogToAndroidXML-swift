@@ -8,6 +8,7 @@
     <string name="error_request">An error occurred during this request.</string>
     <string name="error_universal">Error</string>
     <string name="error_universal_detail">An unknown error occurred.</string>
+    <string name="line_break">This is a text with two\nlines and one\ttab.</string>
     <string name="settings_bugreport_alert_action">Ok</string>
     <string name="settings_bugreport_alert_message">E-mail account must be set up</string>
     <string name="settings_bugreport_alert_title">Error</string>
