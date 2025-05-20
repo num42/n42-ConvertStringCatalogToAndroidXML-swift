@@ -52,6 +52,24 @@
         }
       }
     },
+    "concentrationPercent" : {
+      "comment" : "Label that represents the concentration of a solution in percent",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Konzentration in %%"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "concentration in %%"
+          }
+        }
+      }
+    },
     "counter.button" : {
       "extractionState" : "manual",
       "localizations" : {
