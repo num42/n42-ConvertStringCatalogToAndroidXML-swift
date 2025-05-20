@@ -2,6 +2,7 @@
     <string name="child_button">Child Tap</string>
     <string name="collection_empty_message">Es sind keine Elemente anzuzeigen</string>
     <string name="collection_item">Element %1$s</string>
+    <string name="concentrationPercent">Konzentration in \%</string>
     <string name="counter_button">Tap</string>
     <string name="counter_status_text">Anzahl der Child Taps: %2$d</string>
     <string name="counter_website">Number42 Website</string>
