@@ -32,6 +32,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
       let isBaseLanguage = (outputLanguage == baseLanguage)
 
       // In case of Moko the folders are base or the language rather than values and the language
+      
       let folderName = isKMPWithMoko
             ? (isBaseLanguage ? "/base/" : "/\(outputLanguage.rawValue)/")
             : (isBaseLanguage ? "/values/" : "/values-\(outputLanguage.rawValue)/")
