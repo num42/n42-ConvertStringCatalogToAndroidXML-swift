@@ -28,15 +28,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         for outputLanguage in catalog.languages {
             let xmlDocument = catalog.converted(to: outputLanguage)
             
-            
-            let isBaseLanguage = (outputLanguage == baseLanguage)
-            
-            // In case of Moko the folers are base or the language rather than values and the language
-            let folderName = isKMPWithMoko
-            ? (isBaseLanguage ? "/base/" : "/\(outputLanguage.rawValue)/")
-            : (isBaseLanguage ? "/values/" : "/values-\(outputLanguage.rawValue)/")
-            
-            let url = URL(fileURLWithPath: outputPath+folderName)
+            let url = outputURL(for: outputLanguage)
             
             try! FileManager.default.createDirectory(
                 at: url,
@@ -50,5 +42,21 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
                     encoding: .utf8
                 )
         }
+    }
+    
+    func outputURL(for outputLanguage: StringLanguage) -> URL {
+        let isBaseLanguage = outputLanguage.rawValue == baseLanguage
+        
+        let folderName = if isBaseLanguage, isKMPWithMoko {
+            "/base/"
+        } else if isBaseLanguage, !isKMPWithMoko {
+            "/\(outputLanguage)/"
+        } else if !isBaseLanguage, isKMPWithMoko {
+            "/values/"
+        } else {
+            "/values-\(outputLanguage)/"
+        }
+        
+        return URL(fileURLWithPath: outputPath).appending(path: folderName)
     }
 }
