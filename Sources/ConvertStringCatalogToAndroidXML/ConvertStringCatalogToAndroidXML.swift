@@ -13,6 +13,9 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
   
   @Option(help: "Output path for the generated Android XML file")
   public var outputPath: String
+    
+  @Option(help: "Specify if target project is KMP with moko")
+  public var isKMPWithMoko: Bool = false
   
   public func run() throws {
     guard let catalog = StringCatalog(contentsOfFile: xcstringsPath) else {
@@ -25,9 +28,15 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
     for outputLanguage in catalog.languages {
       let xmlDocument = catalog.converted(to: outputLanguage)
       
-      let url = (outputLanguage == baseLanguage)
-      ? URL(fileURLWithPath: outputPath + "/values/")
-      : URL(fileURLWithPath: outputPath + "/values-\(outputLanguage.rawValue)/")
+        
+      let isBaseLanguage = (outputLanguage == baseLanguage)
+
+      // In case of Moko the folers are base or the language rather than values and the language
+      let folderName = isKMPWithMoko
+            ? (isBaseLanguage ? "/base/" : "/\(outputLanguage.rawValue)/")
+            : (isBaseLanguage ? "/values/" : "/values-\(outputLanguage.rawValue)/")
+
+      let url = URL(fileURLWithPath: outputPath+folderName)
       
       try! FileManager.default.createDirectory(
         at: url,
