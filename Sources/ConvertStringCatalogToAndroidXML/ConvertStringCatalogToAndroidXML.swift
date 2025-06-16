@@ -23,8 +23,6 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
             throw ExitCode.failure
         }
         
-        let baseLanguage = StringLanguage(rawValue: baseLanguage)
-        
         for outputLanguage in catalog.languages {
             let xmlDocument = catalog.converted(to: outputLanguage)
             
