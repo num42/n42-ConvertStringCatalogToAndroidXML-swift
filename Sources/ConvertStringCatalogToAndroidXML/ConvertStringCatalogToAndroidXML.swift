@@ -52,9 +52,9 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         } else if isBaseLanguage, !isKMPWithMoko {
              "/values/"
         } else if !isBaseLanguage, isKMPWithMoko {
-             "/\(outputLanguage)/"
+             "/\(outputLanguage.rawValue)/"
         } else {
-            "/values-\(outputLanguage)/"
+            "/values-\(outputLanguage.rawValue)/"
         }
         
         return URL(fileURLWithPath: outputPath).appending(path: folderName)
