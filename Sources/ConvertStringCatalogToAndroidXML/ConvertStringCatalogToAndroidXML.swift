@@ -50,9 +50,9 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         let folderName = if isBaseLanguage, isKMPWithMoko {
             "/base/"
         } else if isBaseLanguage, !isKMPWithMoko {
-            "/\(outputLanguage)/"
+             "/values/"
         } else if !isBaseLanguage, isKMPWithMoko {
-            "/values/"
+             "/\(outputLanguage)/"
         } else {
             "/values-\(outputLanguage)/"
         }
