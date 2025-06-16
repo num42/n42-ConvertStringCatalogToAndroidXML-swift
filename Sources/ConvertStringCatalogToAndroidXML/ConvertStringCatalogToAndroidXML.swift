@@ -14,7 +14,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
     @Option(help: "Output path for the generated Android XML file")
     public var outputPath: String
     
-    @Option(help: "Specify if target project is KMP with moko")
+    @Flag(help: "Specify if target project is KMP with moko")
     public var isKMPWithMoko: Bool = false
     
     public func run() throws {
