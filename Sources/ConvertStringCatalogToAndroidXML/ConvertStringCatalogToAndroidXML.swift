@@ -35,7 +35,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
             guard !skippedLanguages.contains(outputLanguage.rawValue) else {
                 print("Not writing \(url) as it is skipped.")
                 
-                return
+                continue
             }
             
             let xmlDocument = catalog.converted(to: outputLanguage)
