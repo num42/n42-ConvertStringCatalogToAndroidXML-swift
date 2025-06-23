@@ -58,7 +58,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Konzentration in %%"
           }
         },
@@ -242,6 +242,24 @@
         }
       }
     },
+    "positional" : {
+      "comment" : "first a float, then a string in en, first a string then a float in de",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ %1$.1f"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$.1f %2$@"
+          }
+        }
+      }
+    },
     "settings.bugreport.alert.action" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -357,6 +375,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
+          }
+        }
+      }
+    },
+    "simplePositional" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$.1f"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$.1f"
           }
         }
       }
