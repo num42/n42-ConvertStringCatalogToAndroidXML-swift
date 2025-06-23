@@ -14,6 +14,9 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
     @Option(help: "Output path for the generated Android XML file")
     public var outputPath: String
     
+    @Option(help: "Languages that are skipped")
+    public var skippedLanguages: [String] = []
+    
     @Flag(help: "Specify if target project is KMP with moko")
     public var isKMPWithMoko: Bool = false
     
@@ -24,9 +27,18 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         }
         
         for outputLanguage in catalog.languages {
-            let xmlDocument = catalog.converted(to: outputLanguage)
-            
             let url = outputURL(for: outputLanguage)
+            
+            print("Removing \(url)")
+            try? FileManager.default.removeItem(at: url)
+            
+            guard !skippedLanguages.contains(outputLanguage.rawValue) else {
+                print("Not writing \(url) as it is skipped.")
+                
+                continue
+            }
+            
+            let xmlDocument = catalog.converted(to: outputLanguage)
             
             try! FileManager.default.createDirectory(
                 at: url,
@@ -46,13 +58,13 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         let isBaseLanguage = outputLanguage.rawValue == baseLanguage
         
         let folderName = if isBaseLanguage, isKMPWithMoko {
-            "/base/"
+            "base/"
         } else if isBaseLanguage, !isKMPWithMoko {
-             "/values/"
+             "values/"
         } else if !isBaseLanguage, isKMPWithMoko {
-             "/\(outputLanguage.rawValue)/"
+             "\(outputLanguage.rawValue)/"
         } else {
-            "/values-\(outputLanguage.rawValue)/"
+            "values-\(outputLanguage.rawValue)/"
         }
         
         return URL(fileURLWithPath: outputPath).appending(path: folderName)
