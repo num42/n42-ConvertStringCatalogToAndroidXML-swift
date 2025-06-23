@@ -13,8 +13,8 @@ extension StringCatalog {
       .replacingOccurrences(of: "\n", with: "\\n")
       .replacingOccurrences(of: "\t", with: "\\t")
       .replacingOccurrences(of: "'", with: "\\'")
-      .replacingOccurrences(of: "%@", with: "%1$s")
-      .replacingOccurrences(of: "%d", with: "%2$d")
+      .replacingOccurrences(of: "%@", with: "$s")
+      .replacingOccurrences(of: "%d", with: "$d")
       .replacingOccurrences(of: "%%", with: "\\%") // https://stackoverflow.com/a/74864023
   }
   
