@@ -59,13 +59,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "needs_review",
-            "value" : "Konzentration in %%"
+            "value" : "Konzentration in %"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "concentration in %%"
+            "value" : "concentration in %"
           }
         }
       }
