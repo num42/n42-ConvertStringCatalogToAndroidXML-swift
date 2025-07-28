@@ -14,8 +14,10 @@ extension StringCatalog {
       .replacingOccurrences(of: "\t", with: "\\t")
       .replacingOccurrences(of: "'", with: "\\'")
       .replacing(/%/, with: "\\%")
-      .replacingOccurrences(of: "\\%@", with: "%1$s")
-      .replacingOccurrences(of: "\\%d", with: "%2$d")
+      // We assume that all formatted values have a position!
+      .replacingOccurrences(of: "\\\\%([1-9])\\$@", with: "%$1\\$s", options: .regularExpression)
+      .replacingOccurrences(of: "\\\\%([1-9])\\$d", with: "%$1\\$d", options: .regularExpression)
+      .replacingOccurrences(of: "\\\\%([1-9])\\$.([1-9])f", with: "%$1\\$.$2f", options: .regularExpression)
   }
   
   public func converted(

@@ -41,13 +41,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Element %@"
+            "value" : "Element %1$@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Item %@"
+            "value" : "Item %1$@"
           }
         }
       }
@@ -58,7 +58,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Konzentration in %"
           }
         },
@@ -93,13 +93,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anzahl der Child Taps: %d"
+            "value" : "Anzahl der Child Taps: %1$d"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Number of Child Taps: %d"
+            "value" : "Number of Child Taps: %1$d"
           }
         }
       }
@@ -282,13 +282,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fehler"
+            "value" : "Fehler %1$d"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error"
+            "value" : "Error %1$d"
           }
         }
       }
@@ -444,7 +444,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d bevorstehende Termine"
+                  "value" : "%1$d bevorstehende Termine"
                 }
               },
               "zero" : {
@@ -468,7 +468,7 @@
               "other" : {
                 "stringUnit" : {
                   "state" : "translated",
-                  "value" : "%d upcoming events"
+                  "value" : "%1$d upcoming events"
                 }
               },
               "zero" : {
