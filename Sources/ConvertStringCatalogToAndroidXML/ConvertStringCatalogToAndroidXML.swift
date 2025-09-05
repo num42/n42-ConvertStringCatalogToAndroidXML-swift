@@ -29,8 +29,10 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
         for outputLanguage in catalog.languages {
             let url = outputURL(for: outputLanguage)
             
-            print("Removing \(url)")
-            try? FileManager.default.removeItem(at: url)
+            let fileUrl = url.appending(component: "strings.xml")
+            
+            print("Removing \(fileUrl)")
+            try? FileManager.default.removeItem(at: fileUrl)
             
             guard !skippedLanguages.contains(outputLanguage.rawValue) else {
                 print("Not writing \(url) as it is skipped.")
@@ -47,7 +49,7 @@ struct ConvertStringCatalogToAndroidXML: ParsableCommand {
             
             try! xmlDocument.prettyPrinted
                 .write(
-                    toFile: url.path() + "/strings.xml",
+                    toFile: fileUrl.path(),
                     atomically: true,
                     encoding: .utf8
                 )
