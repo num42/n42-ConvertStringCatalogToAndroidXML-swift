@@ -24,6 +24,20 @@ extension StringCatalog {
     to language: StringLanguage
   ) -> XMLDocument {
     let resources = XMLElement(name: "resources")
+      
+      resources.addAttribute(
+        XMLNode.attribute(
+            withName: "xmlns:tools",
+            stringValue: "http://schemas.android.com/tools"
+        ) as! XMLNode
+      )
+      
+      resources.addAttribute(
+        XMLNode.attribute(
+            withName: "tools:locale",
+            stringValue: language.rawValue
+        ) as! XMLNode
+      )
 
     for string in strings.sorted(by: { lhs, rhs in
       lhs.key < rhs.key

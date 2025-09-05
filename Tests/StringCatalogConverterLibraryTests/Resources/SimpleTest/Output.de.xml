@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="de">
     <string name="child_button">Child Tap</string>
     <string name="collection_empty_message">Es sind keine Elemente anzuzeigen</string>
     <string name="collection_item">Element %1$s</string>
