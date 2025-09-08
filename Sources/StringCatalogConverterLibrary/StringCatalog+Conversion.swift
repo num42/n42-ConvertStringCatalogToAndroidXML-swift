@@ -46,53 +46,79 @@ extension StringCatalog {
       let element: XMLElement
 
       if let singularValue = stringDictionary.value.localizations![language]?.stringUnit?.value {
-        element = XMLElement(
-          name: "string",
-          stringValue: Self.cleanupValueForAndroid(singularValue)
-        )
+        // Skip keys ending in _0, _1 etc. pp. as these are used for arrays
+        guard stringDictionary.key.firstMatch(of: /^.*_[0-9]+$/) == nil else {
+          continue
+        }
 
-        element.addAttribute(
-          XMLNode.attribute(
-            withName: "name",
-            stringValue: Self.cleanupKeyForAndroid(stringDictionary.key)
-          ) as! XMLNode
+        element = singleStringElement(
+          key: Self.cleanupKeyForAndroid(stringDictionary.key),
+          content: Self.cleanupValueForAndroid(singularValue)
         )
       } else {
-        element = XMLElement(
-          name: "plurals",
-          stringValue: nil
+        element = pluralElement(
+          key: Self.cleanupKeyForAndroid(stringDictionary.key),
+          content: stringDictionary.value.localizations![language]?.variations?.plural
         )
-
-        element.addAttribute(
-          XMLNode.attribute(
-            withName: "name",
-            stringValue: Self.cleanupKeyForAndroid(stringDictionary.key)
-          ) as! XMLNode
-        )
-
-        stringDictionary.value.localizations![language]?.variations?.plural?
-          .sorted { lhs, rhs in
-            lhs.key.rawValue > rhs.key.rawValue
-          }
-          .forEach { key, value in
-            let item = XMLElement(
-              name: "item",
-              stringValue: value.stringUnit.value
-            )
-
-            item.addAttribute(
-              XMLNode.attribute(
-                withName: "quantity",
-                stringValue: key.rawValue
-              ) as! XMLNode
-            )
-
-            element.addChild(item)
-          }
       }
+
       resources.addChild(element)
     }
 
     return XMLDocument(rootElement: resources)
   }
+}
+
+func singleStringElement(key: String, content: String) -> XMLElement {
+  let element = XMLElement(
+    name: "string",
+    stringValue: content
+  )
+
+  element.addAttribute(
+    XMLNode.attribute(
+      withName: "name",
+      stringValue: key
+    ) as! XMLNode
+  )
+
+  return element
+}
+
+func pluralElement(key: String, content: [StringVariations.PluralKey: StringVariation]?)
+  -> XMLElement
+{
+  let element = XMLElement(
+    name: "plurals",
+    stringValue: nil
+  )
+
+  element.addAttribute(
+    XMLNode.attribute(
+      withName: "name",
+      stringValue: key
+    ) as! XMLNode
+  )
+
+  content?
+    .sorted { lhs, rhs in
+      lhs.key.rawValue > rhs.key.rawValue
+    }
+    .forEach { key, value in
+      let item = XMLElement(
+        name: "item",
+        stringValue: value.stringUnit.value
+      )
+
+      item.addAttribute(
+        XMLNode.attribute(
+          withName: "quantity",
+          stringValue: key.rawValue
+        ) as! XMLNode
+      )
+
+      element.addChild(item)
+    }
+
+  return element
 }
