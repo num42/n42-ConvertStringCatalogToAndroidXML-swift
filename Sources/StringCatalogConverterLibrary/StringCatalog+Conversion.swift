@@ -40,15 +40,9 @@ extension StringCatalog {
       ) as! XMLNode
     )
 
-    for stringDictionary
-      in strings
-      .filter({ (key: String, value: StringEntry) in
-        !key.isArrayKey
-      })
-      .sorted(by: { lhs, rhs in
-        lhs.key < rhs.key
-      })
-    {
+    for stringDictionary in strings.sorted(by: { lhs, rhs in
+      lhs.key < rhs.key
+    }) {
       let element: XMLElement
 
       if let singularValue = stringDictionary.value.localizations![language]?.stringUnit?.value {
@@ -66,7 +60,22 @@ extension StringCatalog {
       resources.addChild(element)
     }
 
-    // TODO: Generate Arrays
+    let arrayKeys =
+      strings
+      .filter({ (key: String, value: StringEntry) in
+        key.isArrayKey
+      })
+
+    let arrayNames = Set(
+      arrayKeys.map {
+        $0.key.components(separatedBy: "_").dropLast().joined(separator: "_")
+      }
+    )
+
+    arrayNames.forEach { arrayName in
+      let entries = arrayKeys.filter { $0.key.hasPrefix(arrayName) }.map(\.key)
+      resources.addChild(arrayElement(key: arrayName, content: entries))
+    }
 
     return XMLDocument(rootElement: resources)
   }
@@ -124,6 +133,33 @@ func pluralElement(key: String, content: [StringVariations.PluralKey: StringVari
           withName: "quantity",
           stringValue: key.rawValue
         ) as! XMLNode
+      )
+
+      element.addChild(item)
+    }
+
+  return element
+}
+
+func arrayElement(key: String, content: [String]) -> XMLElement {
+  let element = XMLElement(
+    name: "string-array",
+    stringValue: nil
+  )
+
+  element.addAttribute(
+    XMLNode.attribute(
+      withName: "name",
+      stringValue: key
+    ) as! XMLNode
+  )
+
+  content
+    .sorted()
+    .forEach { value in
+      let item = XMLElement(
+        name: "item",
+        stringValue: "@string/\(value)"
       )
 
       element.addChild(item)
