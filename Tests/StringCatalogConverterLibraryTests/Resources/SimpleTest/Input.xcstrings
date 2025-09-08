@@ -242,7 +242,7 @@
         }
       }
     },
-    "my_array_0" : {
+    "my_array.0" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -259,7 +259,7 @@
         }
       }
     },
-    "my_array_1" : {
+    "my_array.1" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -276,7 +276,7 @@
         }
       }
     },
-    "my_array_2" : {
+    "my_array.2" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {

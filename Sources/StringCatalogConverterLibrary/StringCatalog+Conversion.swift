@@ -63,12 +63,12 @@ extension StringCatalog {
     let arrayKeys =
       strings
       .filter({ (key: String, value: StringEntry) in
-        key.isArrayKey
+        key.firstMatch(of: /^.*\.[0-9]+$/) != nil
       })
 
     let arrayNames = Set(
       arrayKeys.map {
-        $0.key.components(separatedBy: "_").dropLast().joined(separator: "_")
+        $0.key.components(separatedBy: ".").dropLast().joined(separator: ".")
       }
     )
 
@@ -159,7 +159,7 @@ func arrayElement(key: String, content: [String]) -> XMLElement {
     .forEach { value in
       let item = XMLElement(
         name: "item",
-        stringValue: "@string/\(value)"
+        stringValue: "@string/\(value.replacingOccurrences(of: ".", with: "_"))"
       )
 
       element.addChild(item)
