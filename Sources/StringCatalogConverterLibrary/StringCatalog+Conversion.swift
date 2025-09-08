@@ -40,25 +40,56 @@ extension StringCatalog {
       ) as! XMLNode
     )
 
-    for string in strings.sorted(by: { lhs, rhs in
+    for stringDictionary in strings.sorted(by: { lhs, rhs in
       lhs.key < rhs.key
     }) {
-      guard let value = string.value.localizations![language]?.stringUnit?.value else {
-        continue
+      let element: XMLElement
+
+      if let singularValue = stringDictionary.value.localizations![language]?.stringUnit?.value {
+        element = XMLElement(
+          name: "string",
+          stringValue: Self.cleanupValueForAndroid(singularValue)
+        )
+
+        element.addAttribute(
+          XMLNode.attribute(
+            withName: "name",
+            stringValue: Self.cleanupKeyForAndroid(stringDictionary.key)
+          ) as! XMLNode
+        )
+      } else {
+        element = XMLElement(
+          name: "plurals",
+          stringValue: nil
+        )
+
+        element.addAttribute(
+          XMLNode.attribute(
+            withName: "name",
+            stringValue: Self.cleanupKeyForAndroid(stringDictionary.key)
+          ) as! XMLNode
+        )
+
+        stringDictionary.value.localizations![language]?.variations?.plural?
+          .sorted { lhs, rhs in
+            lhs.key.rawValue > rhs.key.rawValue
+          }
+          .forEach { key, value in
+            let item = XMLElement(
+              name: "item",
+              stringValue: value.stringUnit.value
+            )
+
+            item.addAttribute(
+              XMLNode.attribute(
+                withName: "quantity",
+                stringValue: key.rawValue
+              ) as! XMLNode
+            )
+
+            element.addChild(item)
+          }
       }
-
-      let element = XMLElement(
-        name: "string", stringValue: Self.cleanupValueForAndroid(value))
-
-      // TODO: implement plurals
-
-      element.addAttribute(
-        XMLNode.attribute(
-          withName: "name",
-          stringValue: Self.cleanupKeyForAndroid(string.key)
-        ) as! XMLNode
-      )
-
       resources.addChild(element)
     }
 
