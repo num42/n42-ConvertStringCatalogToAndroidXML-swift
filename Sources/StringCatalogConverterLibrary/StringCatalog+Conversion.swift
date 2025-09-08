@@ -40,17 +40,18 @@ extension StringCatalog {
       ) as! XMLNode
     )
 
-    for stringDictionary in strings.sorted(by: { lhs, rhs in
-      lhs.key < rhs.key
-    }) {
+    for stringDictionary
+      in strings
+      .filter({ (key: String, value: StringEntry) in
+        !key.isArrayKey
+      })
+      .sorted(by: { lhs, rhs in
+        lhs.key < rhs.key
+      })
+    {
       let element: XMLElement
 
       if let singularValue = stringDictionary.value.localizations![language]?.stringUnit?.value {
-        // Skip keys ending in _0, _1 etc. pp. as these are used for arrays
-        guard stringDictionary.key.firstMatch(of: /^.*_[0-9]+$/) == nil else {
-          continue
-        }
-
         element = singleStringElement(
           key: Self.cleanupKeyForAndroid(stringDictionary.key),
           content: Self.cleanupValueForAndroid(singularValue)
@@ -65,7 +66,15 @@ extension StringCatalog {
       resources.addChild(element)
     }
 
+    // TODO: Generate Arrays
+
     return XMLDocument(rootElement: resources)
+  }
+}
+
+extension String {
+  var isArrayKey: Bool {
+    firstMatch(of: /^.*_[0-9]+$/) != nil
   }
 }
 
