@@ -72,8 +72,8 @@ extension StringCatalog {
       }
     )
 
-    arrayNames.forEach { arrayName in
-      let entries = arrayKeys.filter { $0.key.hasPrefix(arrayName) }.map(\.key)
+    arrayNames.sorted().forEach { arrayName in
+      let entries = arrayKeys.filter { $0.key.hasPrefix(arrayName) }.map(\.key).sorted()
       resources.addChild(arrayElement(key: arrayName, content: entries))
     }
 
