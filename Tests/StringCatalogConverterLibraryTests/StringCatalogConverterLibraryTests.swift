@@ -19,24 +19,24 @@ func conversion(testname: String, language: StringLanguage) {
     .appendingPathComponent("Resources")
     .appendingPathComponent(testname)
     .appendingPathComponent("Input.xcstrings")
-  
+
   let generatedXML = try! StringCatalog(
     contentsOf: inputURL
   )
-    .converted(to: language)
-    .prettyPrinted
-    .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-  
+  .converted(to: language)
+  .prettyPrinted
+  .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+
   let outputURL = URL(fileURLWithPath: #filePath)
     .deletingLastPathComponent()
     .appendingPathComponent("Resources")
     .appendingPathComponent(testname)
     .appendingPathComponent("Output.\(language.rawValue).xml")
-  
+
   let expectedXML = try! String(
     contentsOf: outputURL,
     encoding: .utf8
   ).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-  
+
   #expect(generatedXML == expectedXML)
 }

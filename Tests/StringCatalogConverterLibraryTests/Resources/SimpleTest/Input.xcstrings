@@ -242,6 +242,57 @@
         }
       }
     },
+    "my_array.0" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Erster Eintrag im Array"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First Array Entry"
+          }
+        }
+      }
+    },
+    "my_array.1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Zweiter Eintrag im Array"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Second Array Entry"
+          }
+        }
+      }
+    },
+    "my_array.2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Dritter Eintrag im Array"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Third Array Entry"
+          }
+        }
+      }
+    },
     "settings.bugreport.alert.action" : {
       "extractionState" : "manual",
       "localizations" : {

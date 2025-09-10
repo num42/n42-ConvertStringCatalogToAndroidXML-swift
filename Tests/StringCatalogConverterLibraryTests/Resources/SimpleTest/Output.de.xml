@@ -10,6 +10,14 @@
     <string name="error_universal">Fehler</string>
     <string name="error_universal_detail">Ein unbekannter Fehler ist aufgetreten.</string>
     <string name="line_break">Das ist ein Text mit zwei\nZeilen und einem\tTab.</string>
+    <plurals name="messagesOfTheDay">
+        <item quantity="zero">Keine tagesaktuellen Informationen</item>
+        <item quantity="other">%d tagesaktuelle Informationen</item>
+        <item quantity="one">1 tagesaktuelle Information</item>
+    </plurals>
+    <string name="my_array_0">Erster Eintrag im Array</string>
+    <string name="my_array_1">Zweiter Eintrag im Array</string>
+    <string name="my_array_2">Dritter Eintrag im Array</string>
     <string name="settings_bugreport_alert_action">Ok</string>
     <string name="settings_bugreport_alert_message">E-Mail Account muss eingerichtet sein</string>
     <string name="settings_bugreport_alert_title">Fehler %1$d</string>
@@ -21,4 +29,14 @@
     <string name="title_collection">Collection</string>
     <string name="title_counter">Counter</string>
     <string name="title_settings">Einstellungen</string>
+    <plurals name="upcomingEvents">
+        <item quantity="zero">Keine bevorstehenden Termine</item>
+        <item quantity="other">%1$d bevorstehende Termine</item>
+        <item quantity="one">1 bevorstehender Termin</item>
+    </plurals>
+    <string-array name="my_array">
+        <item>@string/my_array_0</item>
+        <item>@string/my_array_1</item>
+        <item>@string/my_array_2</item>
+    </string-array>
 </resources>
