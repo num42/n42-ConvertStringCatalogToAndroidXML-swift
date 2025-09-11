@@ -10,6 +10,14 @@
     <string name="error_universal">Error</string>
     <string name="error_universal_detail">An unknown error occurred.</string>
     <string name="line_break">This is a text with two\nlines and one\ttab.</string>
+    <plurals name="messagesOfTheDay">
+        <item quantity="zero">No messages of the day</item>
+        <item quantity="other">%d messages of the day</item>
+        <item quantity="one">1 message of the day</item>
+    </plurals>
+    <string name="my_array_0">First Array Entry</string>
+    <string name="my_array_1">Second Array Entry</string>
+    <string name="my_array_2">Third Array Entry</string>
     <string name="settings_bugreport_alert_action">Ok</string>
     <string name="settings_bugreport_alert_message">E-mail account must be set up</string>
     <string name="settings_bugreport_alert_title">Error %1$d</string>
@@ -21,4 +29,14 @@
     <string name="title_collection">Collection</string>
     <string name="title_counter">Counter</string>
     <string name="title_settings">Settings</string>
+    <plurals name="upcomingEvents">
+        <item quantity="zero">No upcoming events</item>
+        <item quantity="other">%1$d upcoming events</item>
+        <item quantity="one">1 upcoming event</item>
+    </plurals>
+    <string-array name="my_array">
+        <item>@string/my_array_0</item>
+        <item>@string/my_array_1</item>
+        <item>@string/my_array_2</item>
+    </string-array>
 </resources>

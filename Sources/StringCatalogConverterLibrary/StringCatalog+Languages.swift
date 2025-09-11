@@ -1,13 +1,13 @@
 import Foundation
 import StringCatalog
 
-public extension StringCatalog {
-    var languages: Set<StringLanguage> {
-        Set(
-            strings.values
-                .map(\.localizations)
-                .compactMap(\.?.keys)
-                .flatMap{ $0 }
-        )
-    }
+extension StringCatalog {
+  public var languages: Set<StringLanguage> {
+    Set(
+      strings.values
+        .map(\.localizations)
+        .compactMap(\.?.keys)
+        .flatMap { $0 }
+    )
+  }
 }
