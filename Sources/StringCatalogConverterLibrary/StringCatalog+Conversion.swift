@@ -45,7 +45,12 @@ extension StringCatalog {
     }) {
       let element: XMLElement
 
-      if let singularValue = stringDictionary.value.localizations![language]?.stringUnit?.value {
+      guard let localization = stringDictionary.value.localizations?[language] else {
+        fatalError(
+          "Missing localization for key \(stringDictionary.key) in language \(language.rawValue)")
+      }
+
+      if let singularValue = localization.stringUnit?.value {
         element = singleStringElement(
           key: Self.cleanupKeyForAndroid(stringDictionary.key),
           content: Self.cleanupValueForAndroid(singularValue)
@@ -53,7 +58,7 @@ extension StringCatalog {
       } else {
         element = pluralElement(
           key: Self.cleanupKeyForAndroid(stringDictionary.key),
-          content: stringDictionary.value.localizations![language]?.variations?.plural
+          content: localization.variations?.plural
         )
       }
 
