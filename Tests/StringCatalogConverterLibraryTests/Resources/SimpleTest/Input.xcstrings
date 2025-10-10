@@ -247,7 +247,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Erster Eintrag im Array"
           }
         },
@@ -264,7 +264,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Zweiter Eintrag im Array"
           }
         },
@@ -281,7 +281,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Dritter Eintrag im Array"
           }
         },
